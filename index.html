@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: serif;
+        }
+        body{
+           background-color: rgb(2, 2, 12);
+           color: white;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           width: 100%;
+        } 
+        .boxconatainer{
+            background-color: white;
+            color: black;
+            height: 300px;
+            width: 500px;
+            border: 3px solid rgb(255, 0, 0);
+        }
+         .heading{
+            height: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+
+         .qoutebox{
+            height: 150px;
+            width: 100%;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+         
+         }
+         #blockqoute{
+            margin-left: 20px;
+            font-size: 1.3rem;
+         }
+         #authors{
+            margin-left: 200px;
+            font-size: 1rem;
+         }
+         .btn-box{
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+           
+         }
+         #btn{
+          
+            height: 40px;
+            width: 100px;
+            background-color: black;
+            color: white;
+            border: 3px solid red;
+            box-shadow: 0px 0px 25px black;
+         }
+         
+    </style>
+       
+    <div class="boxconatainer">
+        <div class="heading">
+       <h1>Quote of the day</h1>
+       </div>
+        <div class="qoutebox">
+        <div id="blockqoute">"Loading..."</div>
+          <div id="authors">--"Loading..."</div>
+
+        </div> 
+        <div class="btn-box">
+      <button id="btn">GET-QUOTE</button> 
+    </div>
+      
+    </div>
+   <script>
+      
+    let button = document.querySelector("#btn");
+    let blockqoutes = document.querySelector("#blockqoute");
+    let author = document.querySelector("#authors")
+        
+    let url = "https://dummyjson.com/quote/random"
+     button.addEventListener('click', async()=>{
+       let response = await fetch(url);
+       let data = await response.json();
+        blockqoutes.innerHTML = data.quote
+        author.innerHTML = data.author
+     })
+   </script>
+    
+</body>
+</html>
